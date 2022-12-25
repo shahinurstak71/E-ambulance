@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "560175351917",
+    "project_id": "eambulance-b760d",
+    "storage_bucket": "eambulance-b760d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560175351917:android:45ca092df6525e6f3bd764",
+        "android_client_info": {
+          "package_name": "com.example.eambulance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560175351917-ai73lc5qikcna7k3857ei327r3g2e0l9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCurjBjsNGhTLC_I3eVRH-lGazJ5zyq_38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560175351917-ai73lc5qikcna7k3857ei327r3g2e0l9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
