@@ -24,7 +24,7 @@ class _SignupState extends State<Signup> {
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(top:30, left:8, right:8,bottom:20),
         child: Form(
           key: _formkey,
           child: SingleChildScrollView(
@@ -35,7 +35,7 @@ class _SignupState extends State<Signup> {
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundColor: Colors.blue,
+                  backgroundImage: NetworkImage("https://cdnuploads.aa.com.tr/uploads/Contents/2019/03/08/thumbs_b_c_dcbf6a63262bfb7d1d76c0f46e06a933.jpg?v=101535"),
                 ),
                 SizedBox(
                   height: 10,

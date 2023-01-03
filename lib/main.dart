@@ -1,17 +1,17 @@
 import 'package:eambulance/screens/signin.dart';
-import 'package:eambulance/screens/singup.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+
 import 'package:flutter/material.dart';
-
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
-  runApp(Ambulance());
+WidgetsFlutterBinding.ensureInitialized();
+await Firebase.initializeApp();
+  
+  runApp(const MyApp());
 }
 
-class Ambulance extends StatelessWidget {
-  const Ambulance({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
