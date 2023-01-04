@@ -2,6 +2,7 @@ import 'package:eambulance/screens/feedback.dart';
 import 'package:eambulance/screens/mappage.dart';
 import 'package:eambulance/screens/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
-
+var box = Hive.box("user");
   final pages = [
    const GoogleMap(),
    const FeedBack(),
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(box.get("type"));
     return Scaffold(
       backgroundColor: const Color(0xffC4DFCB),
       body: pages[pageIndex],
