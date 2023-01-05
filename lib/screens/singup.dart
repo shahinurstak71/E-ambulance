@@ -24,6 +24,8 @@ class _SignupState extends State<Signup> {
   final ambulancenumber = TextEditingController();
   final licence = TextEditingController();
   final locationambulance = TextEditingController();
+  final lat = TextEditingController();
+  final lon = TextEditingController();
   final _formkey = GlobalKey<FormState>();
 
   final password = TextEditingController();
@@ -96,6 +98,8 @@ locationambulance.clear();
       "ambulance_no": ambulancenumber.text,
       "driver_licence": licence.text,
       "set_address": locationambulance.text,
+      "lat": lat.text,
+      "lon": lon.text,
       "status": true,
     });
   }
@@ -292,6 +296,42 @@ locationambulance.clear();
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter current location';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: lat,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    hintText: "Enter your latitude",
+                    labelText: "set latitude",
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter latitude';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: lon,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    hintText: "Enter your longitude",
+                    labelText: "set longitude",
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter longitude';
                     }
                     return null;
                   },

@@ -173,6 +173,50 @@ class _ProfileState extends State<Profile> {
                                           ),
                                         ),
                                       ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 10, top: 10),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white60
+                                                  .withOpacity(0.15),
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: ListTile(
+                                            onTap: () {},
+                                            title: Text(
+                                              "${documentdata["lat"]}"
+                                                  .toUpperCase(),
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black54),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 10, top: 10),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white60
+                                                  .withOpacity(0.15),
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: ListTile(
+                                            onTap: () {},
+                                            title: Text(
+                                              "${documentdata["lon"]}"
+                                                  .toUpperCase(),
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black54),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   )
                                 : Container();
