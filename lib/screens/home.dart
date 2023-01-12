@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
 var box = Hive.box("user");
   final pages = [
-    MapSample(),
+    CustomMarkerWithNetworkImage(),
    const FeedBack(),
    const Profile(),
   ];
