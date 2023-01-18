@@ -13,9 +13,7 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -117,21 +115,10 @@ class MapSampleState extends State<MapSample> {
   dynamic ? mobile;
   bool showDetail=false;
 
+   List   dataMapList = [];
+
   Future<void> _goToTheLake() async {
 
-   await FirebaseFirestore.instance.collection("driver").get().then((value) {
-      value.docs.forEach((element) {
-        latww = double.parse(element.data()['lon']);
-        longwww = double.parse(element.data()['lat']);
-        name = element.data()['name'];
-        email = element.data()['email'];
-        no = element.data()['ambulance_no'];
-        pf = element.data()['photo'];
-        address = element.data()['set_address'];
-        mobile = element.data()['mobile'];
-        print("ELEMENT__${element.data()['lon']}");
-      });
-    });
     LocationPermission permission = await Geolocator.requestPermission();
     var position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -142,7 +129,9 @@ class MapSampleState extends State<MapSample> {
         markerId: const MarkerId("id-1"),
         position: LatLng(position.latitude, position.longitude),
       ));
-      loadData();
+     setState(() {
+       loadData();
+     });
     });
     CameraPosition _kLake = CameraPosition(
         bearing: 192.8334901395799,
@@ -189,26 +178,61 @@ class MapSampleState extends State<MapSample> {
       //           title: 'This is title marker: '+i.toString()
       //       ),
       //     ));
-      marker.add(Marker(
-        onTap: (){
+
+
+      await FirebaseFirestore.instance.collection("driver").get().then((value) {
+        value.docs.forEach((elementtt) {
+
+          // latww = double.parse(elementtt.data()['lon']);
+          // longwww = double.parse(elementtt.data()['lat']);
+          // name = elementtt.data()['name'];
+          // email = elementtt.data()['email'];
+          // no = elementtt.data()['ambulance_no'];
+          // pf = elementtt.data()['photo'];
+          // address = elementtt.data()['set_address'];
+          // mobile = elementtt.data()['mobile'];
+          // print("ELEMENT__${elementtt.data()['lon']}");
+
+          marker.add(Marker(
+              onTap: (){
+                setState(() {
+                  showDetail=true;
+                  // latww = double.parse(elementtt.data()['lon']);
+                  // longwww = double.parse(elementtt.data()['lat']);
+                  name = elementtt.data()['name'];
+                  email = elementtt.data()['email'];
+                  no = elementtt.data()['ambulance_no'];
+                  pf = elementtt.data()['photo'];
+                  address = elementtt.data()['set_address'];
+                  mobile = elementtt.data()['mobile'];
+                });
+              },
+              icon: BitmapDescriptor.fromBytes(resizedMarkerImageBytes),
+
+              markerId:  MarkerId(elementtt.data()['lat'].toString()),
+              position: LatLng(double.parse(elementtt.data()['lat']),double.parse( elementtt.data()['lon'])),
+              infoWindow: InfoWindow(
+
+                  title: "${elementtt.data()['name']}"
+
+
+              )
+          ));
           setState(() {
-            showDetail=true;
+
           });
-        },
-        icon: BitmapDescriptor.fromBytes(resizedMarkerImageBytes),
-
-        markerId:  MarkerId(longwww.toString()),
-        position: LatLng(longwww, latww!),
-        infoWindow: InfoWindow(
-
-          title: "${name}"
+          print("val_22__${elementtt.data()['lat']}");
 
 
-        )
-      ));
-      setState(() {
+        });
+        setState(() {
 
+        });
       });
+setState(() {
+
+});
+
     }
   }
 
@@ -226,19 +250,17 @@ class MapSampleState extends State<MapSample> {
     return Scaffold(
       body: Stack(
         children: [
-          Expanded(
-            child: GoogleMap(
-              mapType: MapType.normal,
-              markers: marker,
-              initialCameraPosition: _kGooglePlex,
-              myLocationEnabled: true,
-              myLocationButtonEnabled: true,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-                setState(() {});
-                _goToTheLake();
-              },
-            ),
+          GoogleMap(
+            mapType: MapType.normal,
+            markers: marker,
+            initialCameraPosition: _kGooglePlex,
+            myLocationEnabled: true,
+            myLocationButtonEnabled: true,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+              setState(() {});
+              _goToTheLake();
+            },
           ),
 
           Visibility(
